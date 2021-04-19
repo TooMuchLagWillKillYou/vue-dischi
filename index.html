@@ -6,72 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <!-- js -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
     <script src="js/script.js"></script>
 
-    <style>
-
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body{
-            padding: 100px;
-            background-color: lavenderblush;
-        }
-
-        .row{
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            padding: 50px 0;
-        }
-
-        .posters{
-            width: 100px;
-            height: 100px;
-        }
-
-        .posters img{
-            width: 100%;
-        }
-
-        .box{
-            width: 50px;
-            height: 50px;
-            background-color: aqua;
-        }
-
-    </style>
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div id="app">
-
-        <div class="row">
-            <select id="select-genre" v-model="select">
-                
-                <option selected="selected">All</option>
-                
-                <option v-for="genre in genres" v-bind:value="genre">
-                    {{ genre }}
-                </option>
-            </select>
-        </div>
-
-        <div class="row">
-
+        <div id="grid">
+        
+            <div class="row">
+                <select id="select-genre" v-model="select">
+                    
+                    <option selected="selected">All</option>
+                    
+                    <option v-for="genre in genres" v-bind:value="genre">
+                        {{ genre }}
+                    </option>
+                </select>
+            </div>
+            
             <div v-for="(album, i) in albums" class="posters">
-                <img :src="album.poster" alt="">
-                <div>
-                    {{ album.year }}
+                <div class="img-container">
+                    <img :src="album.poster" alt="">
                 </div>
+
+                <p class="title">
+                    {{ album.title }}
+                </p>
+
+                <p class="author">
+                    {{ album.author }}
+                </p>
+                
+                <p class="year">
+                    {{ album.year }}
+                </p>
             </div>
 
         </div>
-
     </div>
 </body>
 </html>
